@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="EN">
+    <head>
+        <title>Camstag</title>
+        <link rel="stylesheet" type="text/css" href="camstagtables.css" />
+        <script type="text/javascript" src="camstagtables.js"></script>
+    </head>
+    <body>
+        <script>
+            var tabla = new CamstagTables();
+            function testHeader(caseNumber) {
+                switch (caseNumber) {
+                    case 0:
+                        console.log("Success: Array header with string values");
+                        tabla.setHeaders(["Name", "Address", "Phone"]);
+                        break;
+                    case 1:
+                        console.log("Error: Non array header");
+                        tabla.setHeaders(7);
+                        break;
+                    case 2:
+                        console.log("Error: Empty array header");
+                        tabla.setHeaders([]);
+                        break;
+                    case 3:
+                        console.log("Error: Array header with non string values");
+                        tabla.setHeaders(["Name", 7]);
+                        break;
+                    default:
+                        console.log("Non valid case number");
+                        break;
+                }
+            }
+            function testOrder(caseNumber) {
+                switch (caseNumber) {
+                    case 0:
+                        console.log("Success: Array order with objects with valid properties");
+                        tabla.setOrder([
+                            { name: "Jhon Doe", direction: "asc" },
+                            { name: "Jhon Doe", direction: "desc" },
+                        ]);
+                        break;
+                    case 1:
+                        console.log("Error: Non array order");
+                        tabla.setOrder(7);
+                        break;
+                    case 2:
+                        console.log("Error: Array order with non object values");
+                        tabla.setOrder([{ name: "Jhon Doe", direction: "asc" }, "Name"]);
+                        break;
+                    case 3:
+                        console.log("Error: Array order with objects without name property");
+                        tabla.setOrder([{ name: "Jhon Doe", direction: "asc" }, { direction: "desc" }]);
+                        break;
+                    case 4:
+                        console.log("Error: Array order with objects with non string name property");
+                        tabla.setOrder([
+                            { name: "Jhon Doe", direction: "asc" },
+                            { name: 7, direction: "desc" },
+                        ]);
+                        break;
+                    case 5:
+                        console.log("Error: Array order with objects without direction property");
+                        tabla.setOrder([{ name: "Jhon Doe", direction: "asc" }, { name: "Jhon Doe" }]);
+                        break;
+                    case 6:
+                        console.log("Error: Array order with objects with non valid direction property");
+                        tabla.setOrder([
+                            { name: "Jhon Doe", direction: "asc" },
+                            { name: "Jhon Doe", direction: "left" },
+                        ]);
+                        break;
+                    default:
+                        console.log("Non valid case number");
+                        break;
+                }
+            }
+            function testCurrentPage(caseNumber) {
+                switch (caseNumber) {
+                    case 0:
+                        console.log("Success: Valid page number");
+                        tabla.setCurrentPage(1);
+                        break;
+                    case 1:
+                        console.log("Error: Non valid page number");
+                        tabla.setCurrentPage("1");
+                        break;
+                    case 2:
+                        console.log("Error: Low page number");
+                        tabla.setCurrentPage(0);
+                        break;
+                    default:
+                        console.log("Non valid case number");
+                        break;
+                }
+            }
+            function testRowsPerPage(caseNumber) {
+                switch (caseNumber) {
+                    case 0:
+                        console.log("Success: Valid rows per page number");
+                        tabla.setRowsPerPage(10);
+                        break;
+                    case 1:
+                        console.log("Error: Non valid rows per page number");
+                        tabla.setRowsPerPage("10");
+                        break;
+                    case 2:
+                        console.log("Error: Low rows per page number");
+                        tabla.setRowsPerPage(0);
+                        break;
+                    default:
+                        console.log("Non valid case number");
+                        break;
+                }
+            }
+            function testData(caseNumber) {
+                switch (caseNumber) {
+                    case 0:
+                        console.log("Success: Valid data");
+                        tabla.setData([
+                            { Name: "Jhon Doe", Address: "Fake Street 123", Phone: "123456789" },
+                            { Name: "Jane Doe", Address: "Fake Street 321" },
+                            { Name: "Bryan O'connell", Address: "Fake Avenue 789" },
+                            { Name: "Jhonny O'connell", Address: "Fake Street 987", Phone: "987654321" },
+                            { Name: "Jenny O'bryan", Address: "Fake Street 456" },
+                            { Name: "Elon Musk", Address: "Fake Street 654", Phone: "456789123" },
+                            { Name: "Elvis Presley", Phone: "741852963" },
+                            { Name: "Marie Curie", Address: "Fake Street 852", Phone: "963852741" },
+                            { Name: "Albert Einstein", Address: "Fake Street 258", Phone: "258963147" },
+                            { Name: "Isaac Newton", Address: "Fake Street 147", Phone: "147258369" },
+                            { Name: "Nikola Tesla", Address: "Fake Street 369", Phone: "369147258" },
+                            { Name: "Leonardo Da Vinci", Address: "Fake Street 753", Phone: "753951456" },
+                            { Name: "Galileo Galilei", Address: "Fake Street 951", Phone: "951753456" },
+                            { Name: "Stephen Hawking", Address: "Fake Street 456", Phone: "456123789" },
+                            { Name: "Charles Darwin", Address: "Fake Street 123", Phone: "123456789" },
+                            { Name: "Michael Faraday", Address: "Fake Street 321", Phone: "321654987" },
+                            { Name: "Thomas Edison", Address: "Fake Street 789", Phone: "789456123" },
+                            { Name: "Werner Heisenberg", Address: "Fake Street 987", Phone: "987654321" },
+                            { Name: "Max Planck", Address: "Fake Street 654", Phone: "654987321" },
+                            { Name: "Erwin Schrödinger", Address: "Fake Street 456", Phone: "456321987" },
+                            { Name: "Paul Dirac", Address: "Fake Street 852", Phone: "852963741" },
+                            { Name: "Wolfgang Pauli", Address: "Fake Street 258", Phone: "258741963" },
+                            { Name: "Richard Feynman", Address: "Fake Street 147", Phone: "147963852" },
+                            { Name: "Niels Bohr", Address: "Fake Street 369", Phone: "369852741" },
+                            { Name: "Enrico Fermi", Address: "Fake Street 753", Phone: "753456123" },
+                            { Name: "Robert Oppenheimer", Address: "Fake Street 951", Phone: "951456789" },
+                            { Name: "Murray Gell-Mann", Address: "Fake Street 456", Phone: "456789123" },
+                        ]);
+                        break;
+                    case 1:
+                        console.log("Error: Non array data");
+                        tabla.setData(7);
+                        break;
+                    case 2:
+                        console.log("Error: Array data with non object values");
+                        tabla.setData([{ name: "Jhon Doe", address: "Fake Street 123", phone: "123456789" }, "Name"]);
+                        break;
+                    default:
+                        console.log("Non valid case number");
+                        break;
+                }
+            }
+            function testParent(caseNumber) {
+                switch (caseNumber) {
+                    case 0:
+                        console.log("Success: Valid parent");
+                        tabla.setParent(document.body);
+                        break;
+                    case 1:
+                        console.log("Error: Non valid parent");
+                        tabla.setParent(7);
+                        break;
+                    default:
+                        console.log("Non valid case number");
+                        break;
+                }
+            }
+            function test() {
+                testHeader(0);
+                testOrder(0);
+                testCurrentPage(0);
+                testRowsPerPage(0);
+                testData(0);
+                testParent(0);
+                console.log("Success: All tests passed");
+                tabla.drawTable();
+            }
+        </script>
+    </body>
+</html>

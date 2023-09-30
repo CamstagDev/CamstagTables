@@ -1,0 +1,119 @@
+:root {
+    --header-background-color: rgba(0, 0, 0, 0.7);
+    --header-text-color: rgba(255, 255, 255, 0.7);
+    --general-cell-border: 1px solid rgba(0, 0, 0, 1);
+    --general-cell-text-color: rgba(0, 0, 0, 1);
+    --general-cell-padding: 5px;
+}
+table.camstagtable {
+    border: var(--general-cell-border);
+    border-collapse: collapse;
+}
+table.camstagtable td {
+    padding: var(--general-cell-padding);
+    border: var(--general-cell-border);
+}
+table.camstagtable th {
+    background-color: var(--header-background-color);
+    padding: var(--general-cell-padding);
+    border: var(--general-cell-border);
+    color: var(--header-text-color);
+}
+table.camstagtable tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+table.camstagtable tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+table.camstagtable tr:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+table.camstagtable tfoot {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+table.camstagtable tfoot .pageNumber {
+    height: 2em;
+    width: 2em;
+}
+.camstagtable tfoot > div:first-of-type {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+}
+table.camstagtable tfoot select {
+    margin: 0px 10px;
+}
+table.camstagtable tfoot .arrow {
+    margin: 0.1em;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    transition: 0.5s;
+    overflow: hidden;
+}
+table.camstagtable tfoot .arrow.left:before {
+    position: absolute;
+    display: block;
+    content: "";
+    color: var(--general-cell-text-color);
+    width: 5px;
+    height: 5px;
+    border-top: solid 2px;
+    border-left: solid 2px;
+    transform-origin: 0% 50%;
+    transform: rotatez(-45deg);
+}
+table.camstagtable tfoot .arrow.right:before {
+    position: absolute;
+    display: block;
+    content: "";
+    color: var(--general-cell-text-color);
+    width: 5px;
+    height: 5px;
+    border-bottom: solid 2px;
+    border-right: solid 2px;
+    transform-origin: 0% 50%;
+    transform: rotatez(-45deg);
+}
+table.camstagtable tfoot .arrow.left:hover:before {
+    animation: animationTfootArrowleft 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+table.camstagtable tfoot .arrow.right:hover:before {
+    animation: animationTfootArrowRight 1s cubic-bezier(0, 0.6, 1, 0.4) infinite 0.5s;
+}
+@keyframes animationTfootArrowleft {
+    0% {
+        transform: translateX(1em) rotatez(-45deg);
+    }
+    100% {
+        transform: translateX(-1em) rotatez(-45deg);
+    }
+}
+@keyframes animationTfootArrowRight {
+    0% {
+        transform: translateX(-1em) rotatez(-45deg);
+    }
+    100% {
+        transform: translateX(1em) rotatez(-45deg);
+    }
+}
+
+.upArrow {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #000;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.downArrow {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #000;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    margin-top: 5px;
+}
